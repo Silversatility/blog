@@ -31,3 +31,13 @@ A simple blog application built with **Django** and **Django REST Framework**. T
 ```bash
 git clone https://github.com/Silversatility/blog.git
 cd blog
+
+python -m venv venv
+source venv/bin/activate 
+
+pip install -r requirements.txt
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py runserver
