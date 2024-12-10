@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from blog.api.views import PostListAPIView, PostDetailAPIView, CommentCreateAPIView, PostCreateAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogs/', include('blog.urls')),
+
+    path('api/posts/', PostListAPIView.as_view(), name='post-list-api'),
+    path('api/posts/<int:pk>/', PostDetailAPIView.as_view(), name='post-detail-api'),
+    path('api/posts/<int:post_id>/comments/', CommentCreateAPIView.as_view(), name='comment-create-api'),
+    path('api/posts/create/', PostCreateAPIView.as_view(), name='post-create-api'),
 ]
